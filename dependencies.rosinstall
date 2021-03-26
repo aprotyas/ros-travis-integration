@@ -5,5 +5,5 @@
 # add all repositories from an existing workspace, you can use `wstool scrape`.
 
 - git:
-    local-name: py_trees
-    uri: https://github.com/splintered-reality/py_trees.git
+    local-name: apriltag
+    uri: https://github.com/AprilRobotics/apriltag.git
