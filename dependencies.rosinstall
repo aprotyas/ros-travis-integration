@@ -5,5 +5,5 @@
 # add all repositories from an existing workspace, you can use `wstool scrape`.
 
 - git:
-    local-name: apriltag
-    uri: https://github.com/AprilRobotics/apriltag.git
+    local-name: teleop_twist_keyboard
+    uri: https://github.com/ros-teleop/teleop_twist_keyboard.git
