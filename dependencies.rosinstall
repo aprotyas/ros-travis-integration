@@ -5,5 +5,5 @@
 # add all repositories from an existing workspace, you can use `wstool scrape`.
 
 - git:
-    local-name: grasp-synergy
-    uri: https://github.com/felixduvallet/grasp-synergy.git
+    local-name: octomap
+    uri: https://github.com/OctoMap/octomap.git
