@@ -39,15 +39,23 @@
 
 ################################################################################
 
-sudo: required
 cache:
   - apt
 
 # Build all valid Ubuntu/ROS combinations available on Travis VMs.
 language: generic
-matrix:
+os:
+  - linux
+
+jobs:
   include:
-  - name: "Focal Noetic"
+  - name: "Trusty indigo"
+    dist: trusty
+    env: ROS_DISTRO=indigo
+  - name: "Xenial kinetic"
+    dist: xenial
+    env: ROS_DISTRO=kinetic
+  - name: "Focal noetic"
     dist: focal
     env: ROS_DISTRO=noetic
 
@@ -65,14 +73,20 @@ env:
     - PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages
 
 ################################################################################
-
+    
 # Install system dependencies, namely a very barebones ROS setup.
 before_install:
   - sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
   - sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
   - sudo apt-get update -qq
   - sudo apt-get install dpkg
-  - sudo apt-get install -y python3-catkin-pkg python3-rosdep python3-wstool ros-$ROS_DISTRO-ros-base
+  # ROS Noetic migrated to Python3, hence the package name differences
+  - if [ $ROS_DISTRO == "noetic" ];
+    then
+      sudo apt-get install -y python3-catkin-pkg python3-rosdep python3-wstool ros-$ROS_DISTRO-ros-base;
+    else
+      sudo apt-get install -y python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-ros-base;
+    fi
   - source /opt/ros/$ROS_DISTRO/setup.bash
   # Prepare rosdep to install dependencies.
   - sudo rosdep init
@@ -102,7 +116,7 @@ before_script:
   - wstool up
   # package depdencies: install using rosdep.
   - cd ~/catkin_ws
-  - rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+  - rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO --os ubuntu:$ROS_CI_DESKTOP
 
 # Compile and test (mark the build as failed if any step fails). If the
 # CATKIN_OPTIONS file exists, use it as an argument to catkin_make, for example
