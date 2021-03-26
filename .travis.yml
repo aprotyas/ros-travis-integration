@@ -39,13 +39,15 @@
 
 ################################################################################
 
-sudo: required
 cache:
   - apt
 
 # Build all valid Ubuntu/ROS combinations available on Travis VMs.
 language: generic
-matrix:
+os:
+  - linux
+
+jobs:
   include:
   - name: "Trusty indigo"
     dist: trusty
@@ -114,7 +116,7 @@ before_script:
   - wstool up
   # package depdencies: install using rosdep.
   - cd ~/catkin_ws
-  - rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+  - rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO --os ubuntu:$ROS_CI_DESKTOP
 
 # Compile and test (mark the build as failed if any step fails). If the
 # CATKIN_OPTIONS file exists, use it as an argument to catkin_make, for example
