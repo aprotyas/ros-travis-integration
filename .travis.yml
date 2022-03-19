@@ -50,15 +50,16 @@ dist: focal
 # Configuration variables. All variables are global now, but this can be used to
 # trigger a build matrix for different ROS distributions if desired.
 env:
-  - ROS_DISTRO=noetic
-  - ROS_CI_DESKTOP="`lsb_release -cs`"  # e.g. [trusty|xenial|...]
-  - CI_SOURCE_PATH=$(pwd)
-  - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
-  - CATKIN_OPTIONS=$CI_SOURCE_PATH/catkin.options
-  - ROS_PARALLEL_JOBS='-j8 -l6'
-  # Set the python path manually to include /usr/-/python3/dist-packages
-  # as this is where apt-get installs python packages.
-  - PYTHONPATH=$PYTHONPATH:/usr/lib/python3/dist-packages:/usr/local/lib/python3/dist-packages
+  global:
+    - ROS_DISTRO=noetic
+    - ROS_CI_DESKTOP="`lsb_release -cs`"  # e.g. [trusty|xenial|...]
+    - CI_SOURCE_PATH=$(pwd)
+    - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
+    - CATKIN_OPTIONS=$CI_SOURCE_PATH/catkin.options
+    - ROS_PARALLEL_JOBS='-j8 -l6'
+    # Set the python path manually to include /usr/-/python3/dist-packages
+    # as this is where apt-get installs python packages.
+    - PYTHONPATH=$PYTHONPATH:/usr/lib/python3/dist-packages:/usr/local/lib/python3/dist-packages
 
 ################################################################################
 
