@@ -12,7 +12,7 @@ This repository also contains several example (i.e. trivial) ROS packages that
 serve as example packages for Travis to build and test. They also showcase how
 to correctly handle dependencies (system and source).
 
-[![Build Status](https://app.travis-ci.com/aprotyas/ros-travis-integration-noetic.svg?branch=master)](https://travis-ci.com/github/aprotyas/ros-travis-integration-noetic)
+[![Build Status](https://app.travis-ci.com/aprotyas/ros-travis-integration.svg?branch=master)](https://travis-ci.com/github/aprotyas/ros-travis-integration)
 
 # Installation instructions
 
@@ -123,5 +123,5 @@ The packages are:
   (in this case, install audio_common_msgs using rosdep).
 
 You can look at the [Travis build
-log](https://travis-ci.com/github/aprotyas/ros-travis-integration-noetic) to see exactly
+log](https://travis-ci.com/github/aprotyas/ros-travis-integration) to see exactly
 how it resolves dependencies and then builds the package.
