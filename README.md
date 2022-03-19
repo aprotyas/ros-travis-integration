@@ -1,7 +1,7 @@
 # ROS package continuous integration with Travis (now supporting Noetic).
 
 This repository is a fork of [felixduvallet/ros-travis-integration](https://github.com/felixduvallet/ros-travis-integration). It drops support for EOL ROS distributions and **introduces support for Travis CI builds with the ROS Noetic distribution**.
-It contains a [.travis.yml](https://github.com/aprotyas/ros-travis-integration/blob/noetic/.travis.yml)
+It contains a [.travis.yml](https://github.com/aprotyas/ros-travis-integration-noetic/blob/master/.travis.yml)
 file for setting up continuous integration (through Travis-CI) for any ROS package.
 
 Improvements & issues are welcome via pull requests and the issue tracker
@@ -12,16 +12,16 @@ This repository also contains several example (i.e. trivial) ROS packages that
 serve as example packages for Travis to build and test. They also showcase how
 to correctly handle dependencies (system and source).
 
-[![Build Status](https://app.travis-ci.com/aprotyas/ros-travis-integration.svg?branch=noetic)](https://travis-ci.com/github/aprotyas/ros-travis-integration)
+[![Build Status](https://app.travis-ci.com/aprotyas/ros-travis-integration-noetic.svg?branch=master)](https://travis-ci.com/github/aprotyas/ros-travis-integration-noetic)
 
 # Installation instructions
 
 To enable Travis continuous integration for your ROS package, first copy these
 files to the *root* of your repository:
- - [.travis.yml](https://github.com/aprotyas/ros-travis-integration/blob/noetic/.travis.yml): The script that tells Travis CI what to build.
- - [dependencies.rosinstall](https://github.com/aprotyas/ros-travis-integration/blob/noetic/dependencies.rosinstall): A wstool-generated list of source dependencies
+ - [.travis.yml](https://github.com/aprotyas/ros-travis-integration-noetic/blob/master/.travis.yml): The script that tells Travis CI what to build.
+ - [dependencies.rosinstall](https://github.com/aprotyas/ros-travis-integration-noetic/blob/master/dependencies.rosinstall): A wstool-generated list of source dependencies
    (optional). **Update the contents with your packages.**
- - [catkin.options](https://github.com/aprotyas/ros-travis-integration/blob/noetic/catkin.options): Contents of this (optional) file are passed as arguments to catkin_make (for example to skip building a package).
+ - [catkin.options](https://github.com/aprotyas/ros-travis-integration-noetic/blob/master/catkin.options): Contents of this (optional) file are passed as arguments to catkin_make (for example to skip building a package).
 
 Then, log on to [travis-ci.com](http://travis-ci.com) and turn on continuous integration for the repository:
  - It is free for open-source repositories and provides the same functionality for private repositories (at a price).
@@ -123,5 +123,5 @@ The packages are:
   (in this case, install audio_common_msgs using rosdep).
 
 You can look at the [Travis build
-log](https://travis-ci.com/github/aprotyas/ros-travis-integration) to see exactly
+log](https://travis-ci.com/github/aprotyas/ros-travis-integration-noetic) to see exactly
 how it resolves dependencies and then builds the package.
