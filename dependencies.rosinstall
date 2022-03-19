@@ -6,4 +6,5 @@
 
 - git:
     local-name: grasp-synergy
-    uri: https://github.com/felixduvallet/grasp-synergy.git
+    uri: https://github.com/aprotyas/grasp-synergy.git
+    version: noetic
